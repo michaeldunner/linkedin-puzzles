@@ -89,11 +89,11 @@ export default {
       }
 
       await env.DB.prepare(
-        `INSERT INTO results (game, puzzle_number, time_seconds, guesses, created_at)
+        `INSERT OR IGNORE INTO results (game, puzzle_number, time_seconds, guesses, created_at)
          VALUES (?, ?, ?, ?, datetime('now'))`
       )
-        .bind(parsed.game, parsed.puzzle_number, parsed.time_seconds, parsed.guesses)
-        .run();
+      .bind(parsed.game, parsed.puzzle_number, parsed.time_seconds, parsed.guesses)
+      .run();
 
       return new Response(JSON.stringify(parsed), {
         headers: { 'Content-Type': 'application/json', ...corsHeaders },
