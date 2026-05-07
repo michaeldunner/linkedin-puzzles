@@ -4,7 +4,7 @@
  */
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "polished-glade-3b2d",
+	"name": "linkedin-puzzles",
 	"main": "src/index.ts",
 	"compatibility_date": "2026-05-05",
 	"observability": {
@@ -16,7 +16,7 @@
 	],
 	"d1_databases": [
 		{
-			"binding": "linkedin_puzzles",
+			"binding": "DB",
 			"database_name": "linkedin-puzzles",
 			"database_id": "61d68ee6-0a8a-419f-b811-86c84f536688"
 		}
