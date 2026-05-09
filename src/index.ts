@@ -13,6 +13,7 @@
 
 export interface Env {
   DB: D1Database;
+  API_TOKEN: string;
 }
 
 interface ParsedResult {
@@ -81,6 +82,11 @@ export default {
 
     // POST /results — save a new result from Tasker
     if (request.method === 'POST' && url.pathname === '/results') {
+      const token = request.headers.get('X-API-Token');
+      if (token !== env.API_TOKEN) {
+        return new Response('Unauthorized', { status: 401, headers: corsHeaders });
+      }
+
       const body = await request.text();
       const parsed = parseResult(body);
 
