@@ -29,7 +29,7 @@ function parseResult(text: string): ParsedResult | null {
   const secondLine = lines[1] || '';
 
 // Pinpoint: "Pinpoint #734 | 2 guesses"
-  const pinpointMatch = firstLine.match(/Pinpoint #(\d+) \| (\d+) guesses/);
+  const pinpointMatch = firstLine.match(/Pinpoint #(\d+) \| (\d+)/);
   if (pinpointMatch) {
     return {
       game: 'Pinpoint',
